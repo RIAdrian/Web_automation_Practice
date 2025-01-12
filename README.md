@@ -117,6 +117,100 @@ The script prints the results of each test scenario to the terminal, including s
 - **Error Handling:** The script captures exceptions and prints error messages to the terminal for easier debugging.
 
 
----
+# Basic Authentication Automation Script
+
+This script automates the testing of the **Basic Authentication** page on [The Internet Herokuapp](https://the-internet.herokuapp.com/basic_auth). It handles both valid and invalid authentication scenarios using Selenium.
+
+## Features
+
+1. **Valid Credentials**
+   - Tests successful authentication with the correct username and password.
+   - Verifies that the success message (`"Congratulations!"`) appears after login.
+
+2. **Invalid Credentials**
+   - Tests authentication failure for:
+     - Invalid username.
+     - Invalid password.
+     - No credentials provided.
+     - Case-sensitive username and password.
+   - Verifies that the authentication dialog or failure page is displayed as expected.
+
+3. **Graceful Handling of Failures**
+   - Includes checks for authentication failure by detecting the absence of success messages or expected page elements.
+   - Prevents getting stuck on native browser dialogs.
+
+## Test Scenarios Covered
+
+### Test 1: Valid Username and Password
+- **Input:** Username: `admin`, Password: `admin`.
+- **Expected Outcome:** Authentication is successful, and the message `"Congratulations!"` is displayed.
+
+### Test 2: Invalid Username
+- **Input:** Username: `invalid_user`, Password: `admin`.
+- **Expected Outcome:** Authentication fails, and the authentication dialog appears or the page does not load the success message.
+
+### Test 3: Invalid Password
+- **Input:** Username: `admin`, Password: `invalid_pass`.
+- **Expected Outcome:** Authentication fails, and the authentication dialog appears or the page does not load the success message.
+
+### Test 4: No Credentials Provided
+- **Input:** No username or password in the URL.
+- **Expected Outcome:** Authentication fails, and the browser displays an authentication dialog.
+
+### Test 5: Case Sensitivity Check
+- **Input:** Username: `Admin`, Password: `Admin` (incorrect case).
+- **Expected Outcome:** Authentication fails, as credentials are case-sensitive.
+
+## How to Run the Script
+
+1. **Install Dependencies**
+   - Ensure you have Python and Selenium installed.
+   - Install Selenium using:
+     ```bash
+     pip install selenium
+     ```
+
+2. **Set Up ChromeDriver**
+   - Download the appropriate version of ChromeDriver for your version of Chrome from [ChromeDriver Downloads](https://sites.google.com/chromium.org/driver/).
+   - Update the `Service` path in the script to point to your `chromedriver.exe`.
+
+3. **Run the Script**
+   - Execute the script in your terminal:
+     ```bash
+     python basic_auth_tests.py
+     ```
+
+## Code Breakdown
+
+1. **`start_driver_with_auth(username, password)`**
+   - Launches the browser and navigates to the Basic Authentication page using credentials embedded in the URL.
+
+2. **`verify_auth_success(driver)`**
+   - Verifies that the authentication was successful by checking for the success message.
+
+3. **`verify_auth_failure(driver)`**
+   - Detects authentication failure by checking the absence of the success message or any expected page elements.
+
+4. **Test Execution**
+   - Each test starts with a fresh browser session to ensure test isolation.
+   - Handles valid and invalid authentication scenarios gracefully.
+
+## Expected Output
+
+- **Test 1:** Logs `"Authentication successful with valid credentials."` in the terminal.
+- **Test 2–5:** Logs `"Authentication failed as expected."` for invalid scenarios.
+
+## Notes
+
+- **URL-based Basic Authentication:**
+  - Credentials are passed in the URL in the format: `https://username:password@site`.
+
+- **Limitations:**
+  - Selenium cannot directly interact with native browser authentication dialogs. This script bypasses that limitation by embedding credentials in the URL.
+
+- **Error Handling:**
+  - The script gracefully handles authentication failures and logs appropriate messages for debugging.
+
+
 
 
