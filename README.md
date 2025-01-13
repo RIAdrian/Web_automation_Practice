@@ -211,6 +211,51 @@ This script automates the testing of the **Basic Authentication** page on [The I
 - **Error Handling:**
   - The script gracefully handles authentication failures and logs appropriate messages for debugging.
 
+# Broken Images Test Automation
+
+This project automates the testing of the **Broken Images** page on [The Internet Herokuapp](https://the-internet.herokuapp.com/broken_images). The purpose is to identify and validate broken images on the webpage by verifying their accessibility and response status.
+
+## Features
+
+1. **Image Load Verification**
+   - Retrieves all `<img>` tags on the page.
+   - Checks if each image is accessible by validating its HTTP status code.
+
+2. **Broken Image Detection**
+   - Identifies images that fail to load properly (e.g., due to 404 errors or invalid URLs).
+   - Outputs detailed information about broken images.
+
+3. **Summary Report**
+   - Provides a count of total images, broken images, and successfully loaded images.
+
+4. **Error Handling**
+   - Handles cases where image URLs are invalid or inaccessible due to network issues.
+
+## Prerequisites
+
+1. **Python:**
+   - Ensure Python is installed on your system. Download it from [Python.org](https://www.python.org/).
+
+2. **Install Required Libraries:**
+   - Install Selenium:
+     ```bash
+     pip install selenium
+     ```
+   - Install Requests:
+     ```bash
+     pip install requests
+     ```
+
+3. **ChromeDriver:**
+   - Download the appropriate version of ChromeDriver for your Chrome browser from [ChromeDriver Downloads](https://sites.google.com/chromium.org/driver/).
+   - Update the `Service` path in the script to point to your `chromedriver.exe`.
+
+## How to Run
+
+1. Save the script as `broken_images_test.py`.
+2. Execute the script in your terminal:
+   ```bash
+   python broken_images_test.py
 
 
 
