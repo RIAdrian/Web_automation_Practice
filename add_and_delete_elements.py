@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 import time
 
 # Configure the Service for ChromeDriver
-service = Service("C:\\Users\\rente\\Downloads\\chromedriver-win64\\chromedriver.exe")
+service = Service("...")
 
 # Function to start a new WebDriver instance
 def start_driver():
