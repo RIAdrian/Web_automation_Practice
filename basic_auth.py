@@ -5,7 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 # Configure the Service for ChromeDriver
-service = Service("C:\\Users\\rente\\Downloads\\chromedriver-win64\\chromedriver.exe")
+service = Service("...")
 
 # Function to start a WebDriver instance with authentication
 def start_driver_with_auth(username, password):
